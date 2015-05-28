@@ -1,20 +1,21 @@
 package br.com.goteam.teammate.view;
 
 import br.com.goteam.teammate.modelo.Status;
+import java.io.Serializable;
 
-public class StatusView {
+public class StatusView implements Serializable {
 
     private Long codigo;
     private String descricao;
 
     public StatusView() {
     }
-    
+
     public StatusView(Status status) {
         codigo = status.getCodigo();
         descricao = status.getDescricao();
-    }    
-    
+    }
+
     public Long getCodigo() {
         return codigo;
     }

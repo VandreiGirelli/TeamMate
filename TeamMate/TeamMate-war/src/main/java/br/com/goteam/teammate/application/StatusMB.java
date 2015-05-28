@@ -20,17 +20,17 @@ import org.primefaces.context.RequestContext;
 @ViewScoped
 public class StatusMB implements Serializable {
 
-    private StatusView statusMercaderia = new StatusView();
+    private StatusView status = new StatusView();
     private List<Status> statusList;
     private List<Status> statusFiltered;
     private Status statusSelected;
 
     public StatusView getStatus() {
-        return statusMercaderia;
+        return status;
     }
 
-    public void setStatus(StatusView statusMercaderia) {
-        this.statusMercaderia = statusMercaderia;
+    public void setStatus(StatusView status) {
+        this.status = status;
     }
 
     public List<Status> getStatusList() {
@@ -58,15 +58,21 @@ public class StatusMB implements Serializable {
     }
 
     public void adicionar() {
-        Status novoStatus = this.statusMercaderia.construir();
-        new AdicionaDAO<Status>().adiciona(novoStatus);
+        try {
+            Status novoStatus = this.status.construir();
+            statusExiste(false);
+            new AdicionaDAO<Status>().adiciona(novoStatus);
+            limpar();
+        } catch (DadoInvalidoException die) {
+            die.print();
+        }
     }
 
     public void atualizar() {
         try {
-            Status status = this.statusMercaderia.construir();
+            Status status = this.status.construir();
             statusExiste(true);
-            clean();
+            limpar();
         } catch (DadoInvalidoException die) {
             die.print();
         }
@@ -76,15 +82,15 @@ public class StatusMB implements Serializable {
         try {
             new RemoveDAO<Status>(Status.class).remove(statusSelected, statusSelected.getCodigo());
             statusList.remove(statusSelected);
-            InfoMessage.print("Status '" + statusSelected.getDescricao()+ "' removido com sucesso!");
-            clean();
+            InfoMessage.print("Status '" + statusSelected.getDescricao() + "' removido com sucesso!");
+            limpar();
         } catch (Exception ex) {
             FatalMessage.print(ex.getMessage(), ex.getCause());
         }
     }
 
-    public void clean() {
-        this.statusMercaderia = new StatusView();
+    public void limpar() {
+        this.status = new StatusView();
         this.statusSelected = new Status();
     }
 
@@ -92,28 +98,28 @@ public class StatusMB implements Serializable {
         if (statusList != null && statusList.contains(statusSelected)) {
             atualizar();
         } else {
-            RequestContext.getCurrentInstance().execute("PF('statusAnadir').show()");
+            RequestContext.getCurrentInstance().execute("PF('statusAdicionar').show()");
         }
     }
 
     public void selectStatus() {
         if (statusSelected != null) {
-            this.statusMercaderia = new StatusView(statusSelected);
+            this.status = new StatusView(statusSelected);
         }
     }
 
     public void statusExiste(boolean statusExiste) throws DadoInvalidoException {
         if (statusExiste) {
             for (Status status : statusList) {
-                if (status.getDescricao().equalsIgnoreCase(this.statusMercaderia.getDescricao())
-                        && status.getCodigo() != this.statusMercaderia.getCodigo()) {
-                    throw new IDadoInvalidoException("¡Status ya existe!");
+                if (status.getDescricao().equalsIgnoreCase(this.status.getDescricao())
+                        && status.getCodigo() != this.status.getCodigo()) {
+                    throw new IDadoInvalidoException("Status já existe!");
                 }
             }
         } else {
             for (Status unidadMedidaLista : statusList) {
-                if (unidadMedidaLista.getDescricao().equalsIgnoreCase(this.statusMercaderia.getDescricao())) {
-                    throw new IDadoInvalidoException("¡Status ya existe!");
+                if (unidadMedidaLista.getDescricao().equalsIgnoreCase(this.status.getDescricao())) {
+                    throw new IDadoInvalidoException("Status já existe!");
                 }
             }
         }

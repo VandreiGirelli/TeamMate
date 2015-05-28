@@ -12,19 +12,19 @@
         <div class="Container100">
             <div class="ContainerIndent">
                 <p:panel>
-                    <div class="Container100"><div class="ContainerIndent"><h:outputText value="Formulario de Marca" styleClass="FontBold Fs18 hardblue"></h:outputText></div></div>
+                    <div class="Container100"><div class="ContainerIndent"><h:outputText value="Formulário de Status" styleClass="FontBold Fs18 hardblue"></h:outputText></div></div>
                     <div class="Container100">
                         <div class="ContainerIndent">
 
 
                             <div class="Container11 Responsive MarTop5">
                                 <div class="ContainerIndent">
-                                    <p:outputLabel value="ID:" for="statusID" />
+                                    <p:outputLabel value="Código:" for="statuscodigo" />
                                 </div>
                             </div>
                             <div class="Container25 Responsive">
                                 <div class="ContainerIndent">
-                                    <p:inputText id="statusID" styleClass="Wid50 Disabled" disabled="true" value="#{statusMercaderiaMB.statusMercaderia.ID}"/>
+                                    <p:inputText id="statuscodigo" styleClass="Wid50 Disabled" disabled="true" value="#{statusMB.status.codigo}"/>
                                     <p:commandButton icon="ui-icon-search" styleClass="MarLeft5 DefaultButton" onclick="PF('statusConsulta').show()" />
                                 </div>
                             </div> 
@@ -32,22 +32,22 @@
 
                             <div class="Container11 Responsive MarTop5">
                                 <div class="ContainerIndent">
-                                    <p:outputLabel value="Marca:" for="status" />
+                                    <p:outputLabel value="Status:" for="status" />
                                 </div>
                             </div>
                             <div class="Container25 Responsive">
                                 <div class="ContainerIndent">
-                                    <p:inputText id="status" styleClass="Wid90" maxlength="60" placeholder="Marca" value="#{statusMercaderiaMB.statusMercaderia.status}" />
+                                    <p:inputText id="status" styleClass="Wid90" maxlength="60" placeholder="Status" value="#{statusMB.status.descricao}" />
                                 </div>
                             </div> 
                             <div class="EmptyBox0"/>
 
                             <div class="Container100">
                                 <div class="ContainerIndent">
-                                    <p:commandButton value="Añadir" action="#{statusMercaderiaMB.add()}" styleClass="PadWhite2" update=":conteudo"/>
-                                    <p:commandButton value="Cambiar" styleClass="DefaultButton PadWhite2" action="#{statusMercaderiaMB.confirmsUpdate()}" update=":conteudo"/>
-                                    <p:commandButton value="Eliminar" styleClass="DefaultButton PadWhite2" action="#{statusMercaderiaMB.delete()}" update=":conteudo"/>
-                                    <p:commandButton value="Limpiar" styleClass="DefaultButton PadWhite2" action="#{statusMercaderiaMB.clean()}" update=":conteudo"/>
+                                    <p:commandButton value="Adicionar" action="#{statusMB.adicionar()}" styleClass="PadWhite2" update=":conteudo"/>
+                                    <p:commandButton value="Alterar" styleClass="DefaultButton PadWhite2" action="#{statusMB.confirmsUpdate()}" update=":conteudo"/>
+                                    <p:commandButton value="Remover" styleClass="DefaultButton PadWhite2" action="#{statusMB.delete()}" update=":conteudo"/>
+                                    <p:commandButton value="Limpar" styleClass="DefaultButton PadWhite2" action="#{statusMB.clean()}" update=":conteudo"/>
                                 </div>
                             </div>
                         </div>
@@ -58,60 +58,60 @@
 
         <p:dialog header="Consulta" modal="true" widgetVar="statusConsulta" width="900" draggable="false">
 
-            <p:panel header="Marca Consulta">
+            <p:panel header="Status Consulta">
                 <p:dataTable draggableColumns="true"
                              widgetVar="statusTabela"
-                             emptyMessage="Los datos no encontrado." 
-                             filteredValue="#{statusMercaderiaMB.statusFiltered}"
+                             emptyMessage="Dados não encontrados." 
+                             filteredValue="#{statusMB.statusFiltered}"
                              id="tabelaObjeto"  
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
                              rows="5"
-                             rowKey="#{statusMercaderia.ID}" 
-                             selection="#{statusMercaderiaMB.statusSelected}"
+                             rowKey="#{status.codigo}" 
+                             selection="#{statusMB.statusSelected}"
                              selectionMode="single"       
-                             value="#{statusMercaderiaMB.statusList}"
-                             var="statusMercaderia"                 
+                             value="#{statusMB.statusList}"
+                             var="status"                 
                              >
 
-                    <p:column filterMatchMode="contains" sortBy="#{statusMercaderia.ID}" filterBy="#{statusMercaderia.ID}">                    
+                    <p:column filterMatchMode="contains" sortBy="#{status.codigo}" filterBy="#{status.codigo}">                    
                         <f:facet name="header">
-                            <h:outputText value="ID"/>
+                            <h:outputText value="Código"/>
                         </f:facet>
-                        <h:outputText value="#{statusMercaderia.ID}"/>
+                        <h:outputText value="#{status.codigo}"/>
                     </p:column>
 
-                    <p:column filterMatchMode="contains" sortBy="#{statusMercaderia.status}" filterBy="#{statusMercaderia.status}">                    
+                    <p:column filterMatchMode="contains" sortBy="#{status.descricao}" filterBy="#{status.descricao}">                    
                         <f:facet name="header">
-                            <h:outputText value="Marca"/>
+                            <h:outputText value="Status"/>
                         </f:facet>                    
-                        <h:outputText value="#{statusMercaderia.status}" />
+                        <h:outputText value="#{status.descricao}" />
                     </p:column>
 
                 </p:dataTable>
             </p:panel>
 
             <div class="Container100"><div class="ContainerIndent"></div> 
-                <p:commandButton action="#{statusMercaderiaMB.selectMarcaMercaderia()}" styleClass="Fright" onclick="PF('statusConsulta').hide()" value="Concluído" update=":conteudo"/>
+                <p:commandButton action="#{statusMB.selectStatus()}" styleClass="Fright" onclick="PF('statusConsulta').hide()" value="Concluído" update=":conteudo"/>
             </div>
         </p:dialog>   
 
-        <p:dialog closable="true" header="Pregunta." modal="true" resizable="false" widgetVar="marcaAnadir">  
+        <p:dialog closable="true" header="Pergunta." modal="true" resizable="false" widgetVar="statusAdicionar">  
             <h:panelGrid columns="1">
                 <h:panelGrid columns="2">
-                    <h:outputText value="¡Este registro no existe! Puede elegir entre las siguientes opciones:" />
+                    <h:outputText value="Este registro não existe! Você pode escolher entre as seguintes opções:" />
                 </h:panelGrid>
                 <h:panelGrid columns="2" style="margin-left: 10px">
                     <h:outputText class="badge btn-primary" value="1" />
-                    <h:outputText value="Anãdir un nuevo registro." />
+                    <h:outputText value="Adicionar um novo registro." />
                     <h:outputText class="badge" value="2" />
-                    <h:outputText value="Cancelar cambio" />   
+                    <h:outputText value="Cancelar alteração." />   
                 </h:panelGrid>
             </h:panelGrid>
 
             <div class="modal-footer">
-                <p:commandButton class="btn btn-default" onclick="marcaAnadir.hide()" value="Cancelar"/>    
-                <p:commandButton class="btn btn-primary" action="#{marcaMercaderiaMB.add()}" onclick="marcaAnadir.hide()" value="Anãdir" update=":conteudo"/>                    
+                <p:commandButton class="btn btn-default" onclick="statusAdicionar.hide()" value="Cancelar"/>    
+                <p:commandButton class="btn btn-primary" action="#{statusMB.adicionar()}" onclick="statusAdicionar.hide()" value="Anãdir" update=":conteudo"/>                    
             </div>                                                
         </p:dialog>
 
