@@ -1,1 +1,16 @@
-E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\NewSessionBean.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\modelo\Usuario.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\util\JPAUtil.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\exception\impl\EDadoInvalidoException.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\exception\DadoInvalidoException.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\valueobjects\TipoDadoInvalido.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\exception\impl\ADadoInvalidoException.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\dao\AdicionaDAO.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\dao\ArmazemDeRegistros.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\modelo\Solicitacao.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\modelo\Estado.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\dao\RemoveDAO.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\exception\impl\FDadoInvalidoException.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\main.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\dao\AtualizaDAO.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\modelo\Status.java
+E:\Users\Rafael\Documents\TeamMate\TeamMate\TeamMate-ejb\src\main\java\br\com\goteam\teammate\exception\impl\IDadoInvalidoException.java

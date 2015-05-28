@@ -27,4 +27,16 @@ public class Estado implements Serializable {
     private String descricao;
     @ManyToOne
     private Solicitacao solicitacao;
+
+    public Estado(Long codigo, Status status, Usuario usuario, Date dataInicial, Date dataFinal, Integer grauDeConclusao, String descricao, Solicitacao solicitacao) {
+        this.codigo = codigo;
+        this.status = status;
+        this.usuario = usuario;
+        this.dataInicial = dataInicial;
+        this.dataFinal = dataFinal;
+        this.grauDeConclusao = grauDeConclusao;
+        this.descricao = descricao;
+        this.solicitacao = solicitacao;
+    }
+    
 }

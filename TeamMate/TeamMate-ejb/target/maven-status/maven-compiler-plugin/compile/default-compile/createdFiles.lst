@@ -1,1 +1,16 @@
-br\com\goteam\teammate\NewSessionBean.class
+br\com\goteam\teammate\exception\impl\ADadoInvalidoException.class
+main.class
+br\com\goteam\teammate\util\JPAUtil.class
+br\com\goteam\teammate\modelo\Estado.class
+br\com\goteam\teammate\dao\RemoveDAO.class
+br\com\goteam\teammate\dao\AdicionaDAO.class
+br\com\goteam\teammate\modelo\Status.class
+br\com\goteam\teammate\exception\impl\FDadoInvalidoException.class
+br\com\goteam\teammate\valueobjects\TipoDadoInvalido.class
+br\com\goteam\teammate\dao\ArmazemDeRegistros.class
+br\com\goteam\teammate\exception\impl\EDadoInvalidoException.class
+br\com\goteam\teammate\exception\DadoInvalidoException.class
+br\com\goteam\teammate\modelo\Usuario.class
+br\com\goteam\teammate\dao\AtualizaDAO.class
+br\com\goteam\teammate\exception\impl\IDadoInvalidoException.class
+br\com\goteam\teammate\modelo\Solicitacao.class

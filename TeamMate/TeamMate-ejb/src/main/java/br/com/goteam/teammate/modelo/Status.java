@@ -19,4 +19,36 @@ public class Status implements Serializable {
     private String descricao;
     @OneToMany(mappedBy = "status")
     private List<Estado> listaEstado;
+
+    public Status() {
+    }
+
+    public Status(Long codigo, String descricao) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+    }
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+    
+    @Override
+    public boolean equals(Object objeto) {
+        if (objeto == null) {
+            return false;
+        }
+        if (!(objeto instanceof Status)) {
+            return false;
+        }
+        Status outro = (Status) objeto;
+        if (this.codigo == null) {
+            return false;
+        }
+        return this.codigo.equals(outro.codigo);
+    }
+    
 }
