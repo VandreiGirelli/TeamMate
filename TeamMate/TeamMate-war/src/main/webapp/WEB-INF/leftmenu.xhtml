@@ -1,0 +1,29 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <h:outputScript name="js/buscar.js" library="sentinel-layout" />
+
+    <div id="layout-menubar" class="bigmenu Unselectable fontRegular">
+        <div class="layout-menubarinner-box" id="buttonArea">
+            <a href="javascript:;" id="layout-menubar-resize" class="BordRad3" title="Menu Resize"><i class="icon-th-list-2"></i></a>
+            <a href="javascript:;" id="layout-menubar-resize2" class="BordRad3" title="Open Menu"><i class="icon-menu"></i></a>
+        </div>
+
+        <div class="layout-menubarinner-box" id="searchArea">
+            <i class="icon-search floatLeft gray"></i>
+            <input id="input-buscar" alt="lista-left-menu" type="text" class="layout-menubar-search floatLeft Animated05" placeholder="Buscar..."/>
+        </div>
+
+        <ul class="layout-menubar-container" id="lista-left-menu">
+            <li id="sm_0" class="layout-menubar-default layout-menubar-active firstnode"><a onclick="Sentinel.openSubMenu(this);" href="dashboard.xhtml"><i class="icon-home-outline yellow i"></i> Dashboard</a></li>
+            <li id="sm_7" class="layout-menubar-default firstnode"><a onclick="Sentinel.openSubMenu(this);" href="novasolicitacao.xhtml" class="level-1"><i class="icon-plus yellow i"></i> Nova Solicitação</a></li>
+            <li id="sm_7" class="layout-menubar-default firstnode"><a onclick="Sentinel.openSubMenu(this);" href="privilegios.xhtml" class="level-1"><i class="icon-block yellow i"></i> Privilégios</a></li>
+        </ul>
+
+    </div>
+
+</ui:composition>

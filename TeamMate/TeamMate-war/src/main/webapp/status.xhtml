@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+
+        <div class="EmptyBox10"/>
+
+        <div class="Container100">
+            <div class="ContainerIndent">
+                <p:panel>
+                    <div class="Container100"><div class="ContainerIndent"><h:outputText value="Formulario de Marca" styleClass="FontBold Fs18 hardblue"></h:outputText></div></div>
+                    <div class="Container100">
+                        <div class="ContainerIndent">
+
+
+                            <div class="Container11 Responsive MarTop5">
+                                <div class="ContainerIndent">
+                                    <p:outputLabel value="ID:" for="statusID" />
+                                </div>
+                            </div>
+                            <div class="Container25 Responsive">
+                                <div class="ContainerIndent">
+                                    <p:inputText id="statusID" styleClass="Wid50 Disabled" disabled="true" value="#{statusMercaderiaMB.statusMercaderia.ID}"/>
+                                    <p:commandButton icon="ui-icon-search" styleClass="MarLeft5 DefaultButton" onclick="PF('statusConsulta').show()" />
+                                </div>
+                            </div> 
+                            <div class="EmptyBox0"/>
+
+                            <div class="Container11 Responsive MarTop5">
+                                <div class="ContainerIndent">
+                                    <p:outputLabel value="Marca:" for="status" />
+                                </div>
+                            </div>
+                            <div class="Container25 Responsive">
+                                <div class="ContainerIndent">
+                                    <p:inputText id="status" styleClass="Wid90" maxlength="60" placeholder="Marca" value="#{statusMercaderiaMB.statusMercaderia.status}" />
+                                </div>
+                            </div> 
+                            <div class="EmptyBox0"/>
+
+                            <div class="Container100">
+                                <div class="ContainerIndent">
+                                    <p:commandButton value="Añadir" action="#{statusMercaderiaMB.add()}" styleClass="PadWhite2" update=":conteudo"/>
+                                    <p:commandButton value="Cambiar" styleClass="DefaultButton PadWhite2" action="#{statusMercaderiaMB.confirmsUpdate()}" update=":conteudo"/>
+                                    <p:commandButton value="Eliminar" styleClass="DefaultButton PadWhite2" action="#{statusMercaderiaMB.delete()}" update=":conteudo"/>
+                                    <p:commandButton value="Limpiar" styleClass="DefaultButton PadWhite2" action="#{statusMercaderiaMB.clean()}" update=":conteudo"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </div>
+        </div>
+
+        <p:dialog header="Consulta" modal="true" widgetVar="statusConsulta" width="900" draggable="false">
+
+            <p:panel header="Marca Consulta">
+                <p:dataTable draggableColumns="true"
+                             widgetVar="statusTabela"
+                             emptyMessage="Los datos no encontrado." 
+                             filteredValue="#{statusMercaderiaMB.statusFiltered}"
+                             id="tabelaObjeto"  
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                             rows="5"
+                             rowKey="#{statusMercaderia.ID}" 
+                             selection="#{statusMercaderiaMB.statusSelected}"
+                             selectionMode="single"       
+                             value="#{statusMercaderiaMB.statusList}"
+                             var="statusMercaderia"                 
+                             >
+
+                    <p:column filterMatchMode="contains" sortBy="#{statusMercaderia.ID}" filterBy="#{statusMercaderia.ID}">                    
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{statusMercaderia.ID}"/>
+                    </p:column>
+
+                    <p:column filterMatchMode="contains" sortBy="#{statusMercaderia.status}" filterBy="#{statusMercaderia.status}">                    
+                        <f:facet name="header">
+                            <h:outputText value="Marca"/>
+                        </f:facet>                    
+                        <h:outputText value="#{statusMercaderia.status}" />
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+
+            <div class="Container100"><div class="ContainerIndent"></div> 
+                <p:commandButton action="#{statusMercaderiaMB.selectMarcaMercaderia()}" styleClass="Fright" onclick="PF('statusConsulta').hide()" value="Concluído" update=":conteudo"/>
+            </div>
+        </p:dialog>   
+
+        <p:dialog closable="true" header="Pregunta." modal="true" resizable="false" widgetVar="marcaAnadir">  
+            <h:panelGrid columns="1">
+                <h:panelGrid columns="2">
+                    <h:outputText value="¡Este registro no existe! Puede elegir entre las siguientes opciones:" />
+                </h:panelGrid>
+                <h:panelGrid columns="2" style="margin-left: 10px">
+                    <h:outputText class="badge btn-primary" value="1" />
+                    <h:outputText value="Anãdir un nuevo registro." />
+                    <h:outputText class="badge" value="2" />
+                    <h:outputText value="Cancelar cambio" />   
+                </h:panelGrid>
+            </h:panelGrid>
+
+            <div class="modal-footer">
+                <p:commandButton class="btn btn-default" onclick="marcaAnadir.hide()" value="Cancelar"/>    
+                <p:commandButton class="btn btn-primary" action="#{marcaMercaderiaMB.add()}" onclick="marcaAnadir.hide()" value="Anãdir" update=":conteudo"/>                    
+            </div>                                                
+        </p:dialog>
+
+    </ui:define>
+
+</ui:composition>

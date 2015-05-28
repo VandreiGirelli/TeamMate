@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:t="http://myfaces.apache.org/tomahawk"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+
+        <p:panel style="width: 60%;height: 350px; margin-top: 15%;margin-left: 15%; border: none">
+            <span class="Fs50 FontTitilliumSemiBoldItalic Fleft" style="margin-left: 31%"><span class="softblue">TEAM</span><span class="hardblue">MATE</span></span>
+            <p align="center"><p:inputText styleClass="Wid90"/></p>
+            <div class="EmptyBox5"/>
+            <p align="center">
+                <t:dataList var="solicitacao" value="#{dashboardMB.listaSolicitacao}" layout="constant" >
+                    <p:commandLink value="#{solicitacao.codigo}"/>
+                </t:dataList>
+            </p>
+        </p:panel>
+
+    </ui:define>
+
+</ui:composition>

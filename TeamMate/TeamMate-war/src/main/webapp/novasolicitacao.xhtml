@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+
+        <div class="EmptyBox10"/>
+        <div class="Container100"><div class="ContainerIndent"><h:outputText value="Formulário de Nova Solicitação" styleClass="FontBold Fs18 hardblue"></h:outputText></div></div>
+        <div class="Container80">
+            <div class="ContainerIndent">                
+                <p:panel> 
+                    <div class="Responsive MarTop5" style="width:11%; overflow:hidden; float:left;">
+                        <div class="ContainerIndent">
+                            <h:outputText value="Data:"/>
+                        </div>
+                    </div>
+                    <div class="Container65 Responsive MarTop5">
+                        <div class="ContainerIndent">
+                            <h:outputText value="#{novaSolicitacaoMB.novaSolicitacao.data}"/>
+                        </div>
+                    </div>    
+                    <div class="EmptyBox0"/>
+
+                    <div class="Responsive MarTop5" style="width:11%; overflow:hidden; float:left;">
+                        <div class="ContainerIndent">
+                            <p:outputLabel value="Assunto:" for="novaSolicitacaoAssunto" />
+                        </div>
+                    </div>
+                    <div class="Container65 Responsive">
+                        <div class="ContainerIndent">
+                            <p:inputText id="novaSolicitacaoAssunto" style="width: 97%" maxlength="60" placeholder="Assunto" value="#{novaSolicitacaoMB.novaSolicitacao.assunto}" />
+                        </div>
+                    </div> 
+
+                    <div class="Responsive MarTop5" style="width:11%; overflow:hidden; float:left;">
+                        <div class="ContainerIndent">
+                            <p:outputLabel value="Descrição:" for="novaSolicitacaoDescricao" />
+                        </div>
+                    </div>
+                    <div class="Container65 Responsive">
+                        <div class="ContainerIndent">
+                            <p:editor style="margin-left: 0px; width: 99%" id="novaSolicitacaoDescricao" widgetVar="editorWidget" value="#{novaSolicitacaoMB.novaSolicitacao.descricao}"/>
+                        </div>
+                    </div> 
+                    <div class="Responsive MarTop5" style="width:11%; overflow:hidden; float:left;">
+                        <div class="ContainerIndent">
+                            <p:outputLabel/>
+                        </div>
+                    </div>
+                    <div class="Container65 Responsive">
+                        <div class="ContainerIndent">
+                            <p:commandButton value="Enviar" action="#{novaSolicitacaoMB.adicionar()}"/>
+                        </div>
+                    </div> 
+                </p:panel>    
+
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
